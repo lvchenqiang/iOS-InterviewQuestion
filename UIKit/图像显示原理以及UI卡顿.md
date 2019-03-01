@@ -62,7 +62,7 @@ GPU:
 
 ![](./Snip20190228_26.png)
 
-当我们在调用 setNeedsDisplay的时候,并不会立即触发渲染而是会调用layer的同名方法给layer打上脏标记,然后在当前runloop接触的时候，调用 display.
+当我们在调用 setNeedsDisplay的时候,并不会立即触发渲染而是会调用layer的同名方法给layer打上脏标记,然后在当前runloop结束的时候，调用 display.
 
 ##### 系统的绘制流程
 
