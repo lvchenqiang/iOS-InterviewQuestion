@@ -19,3 +19,33 @@
 
 
 ### Block的内存管理
+
+#### Block的内存位置
+![](./img/Snip20190306_18.png)
+
+#### Block的Copy操作
+
+![](./img/Snip20190306_19.png)
+
+#### Block的销毁
+
+![](./img/Snip20190306_20.png)
+
+在MRC的环境下,如果栈上的Block执行Copy之后,如果堆上的Block不做处理,则会造成内存释放。
+
+#### __block变量Copy操作
+
+![](./img/Snip20190306_21.png)
+
+栈上Block的变量,在执行copy操作后。会在堆上产生一个`__block变量`,开辟新的内存空间。此时,栈上的`__block变量`的`__forwarding`指针指向堆上的`__block变量`,堆上的`__block变量`的`__forwarding`指针指向自己。
+
+所以,修改栈上的`__block变量`的值,会通过`__forwarding`指针找到堆上的`__block变量` 然后修改其值。
+
+
+#### __forwarding存在的意义
+
+不论在任何内存位置,都可以顺利的访问同一个`__block变量`。
+
+
+
+
