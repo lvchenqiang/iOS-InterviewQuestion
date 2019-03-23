@@ -1,13 +1,13 @@
 
-### UIView和CALyer的关系
+### UIView和CALayer的关系
 
-UIView为CALyer提供内容,以及负责处理触摸等用户交互事件，参与事件响应链。
+UIView为CALayer提供内容,以及负责处理触摸等用户交互事件，参与事件响应链。
 
-CALyer负责显示内容contents,基于 单一职责的设计概念。
+CALayer负责显示内容contents,基于 单一职责的设计概念。
 
 
 
-### CALyer子类的一些专用图层
+### CALayer子类的一些专用图层
 
 #### CAShapeLayer
 CAShapeLayer 是一个通过矢量图形而不是bitmap来绘制的图层子类。 可以指定颜色和线宽等属性，使用CGPath定义想要绘制的图形，最后CAShapeLayer就会自动渲染出来。

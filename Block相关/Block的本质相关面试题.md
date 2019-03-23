@@ -18,6 +18,18 @@
 ![](./img/Snip20190305_17.png)
 
 
+```
+__block可以用于解决block内部无法修改auto变量值的问题
+
+__block不能修饰全局变量、静态变量（static）
+
+编译器会将__block变量包装成一个对象
+
+```
+
+
+
+
 ### Block的内存管理
 
 #### Block的内存位置
@@ -47,5 +59,29 @@
 不论在任何内存位置,都可以顺利的访问同一个`__block变量`。
 
 
+#### 对象类型的auto变量、__block变量
 
+
+```
+当block在栈上时，对它们都不会产生强引用
+
+当block拷贝到堆上时，都会通过copy函数来处理它们
+__block变量（假设变量名叫做a）
+_Block_object_assign((void*)&dst->a, (void*)src->a, 8/*BLOCK_FIELD_IS_BYREF*/);
+
+对象类型的auto变量（假设变量名叫做p）
+_Block_object_assign((void*)&dst->p, (void*)src->p, 3/*BLOCK_FIELD_IS_OBJECT*/);
+
+当block从堆上移除时，都会通过dispose函数来释放它们
+__block变量（假设变量名叫做a）
+_Block_object_dispose((void*)src->a, 8/*BLOCK_FIELD_IS_BYREF*/);
+
+对象类型的auto变量（假设变量名叫做p）
+_Block_object_dispose((void*)src->p, 3/*BLOCK_FIELD_IS_OBJECT*/);
+
+
+
+
+
+```
 
