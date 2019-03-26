@@ -34,6 +34,8 @@ objc_msgSend底层有3大阶段
 
 **从arm64架构开始，对isa进行了优化，变成了一个共用体（union）结构，还使用位域来存储更多的信息**
 
+**类对象和元类对象的地址后三位都是0.**
+
 ![](./img/runtime_struct.png)
 
 
@@ -97,8 +99,97 @@ objc_msgSend的执行流程可以分为3大阶段:
 
 ##### objc_msgSend执行流程 – 消息转发
 
-![](./img/Snip20190323_25、6.png)
+![](./img/Snip20190323_26.png)
 
+
+#### 自定义位域存储(模仿isa)
+
+
+```
+
+#import "MJPerson.h"
+
+#define MJTallMask (1<<0)
+#define MJRichMask (1<<1)
+#define MJHandsomeMask (1<<2)
+#define MJThinMask (1<<3)
+
+@interface MJPerson()
+{
+    union {
+        int bits;
+        
+        struct {
+            char tall : 4;
+            char rich : 4;
+            char handsome : 4;
+            char thin : 4;
+        };
+    } _tallRichHandsome;
+}
+@end
+
+@implementation MJPerson
+
+- (void)setTall:(BOOL)tall
+{
+    if (tall) {
+        _tallRichHandsome.bits |= MJTallMask;
+    } else {
+        _tallRichHandsome.bits &= ~MJTallMask;
+    }
+}
+
+- (BOOL)isTall
+{
+    return !!(_tallRichHandsome.bits & MJTallMask);
+}
+
+- (void)setRich:(BOOL)rich
+{
+    if (rich) {
+        _tallRichHandsome.bits |= MJRichMask;
+    } else {
+        _tallRichHandsome.bits &= ~MJRichMask;
+    }
+}
+
+- (BOOL)isRich
+{
+    return !!(_tallRichHandsome.bits & MJRichMask);
+}
+
+- (void)setHandsome:(BOOL)handsome
+{
+    if (handsome) {
+        _tallRichHandsome.bits |= MJHandsomeMask;
+    } else {
+        _tallRichHandsome.bits &= ~MJHandsomeMask;
+    }
+}
+
+- (BOOL)isHandsome
+{
+    return !!(_tallRichHandsome.bits & MJHandsomeMask);
+}
+
+
+
+- (void)setThin:(BOOL)thin
+{
+    if (thin) {
+        _tallRichHandsome.bits |= MJThinMask;
+    } else {
+        _tallRichHandsome.bits &= ~MJThinMask;
+    }
+}
+
+- (BOOL)isThin
+{
+    return !!(_tallRichHandsome.bits & MJThinMask);
+}
+
+```
 
 
 

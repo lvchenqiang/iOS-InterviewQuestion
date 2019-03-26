@@ -205,28 +205,6 @@ SEL sel_registerName(const char *str)`
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ####  LLVM中间代码
 Objective-C在变为机器代码之前，会被LLVM编译器转换为中间代码（Intermediate Representation）
 ```
