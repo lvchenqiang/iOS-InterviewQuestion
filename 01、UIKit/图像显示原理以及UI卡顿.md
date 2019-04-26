@@ -4,6 +4,9 @@
 
 **在iOS中是双缓冲机制，有前帧缓存、后帧缓存**
 
+[iOS 视图，动画渲染机制探究](https://www.cnblogs.com/bugly/p/5056578.html)
+
+
 #### CPU的工作
 
 
@@ -17,16 +20,19 @@ C --> D[Commit]
 ```
 
 * Layout: UI布局、文本计算等
- 此阶段主要是准备你的视图/图层的层级关系,以及设置图层属性(位置,背景色,边框等等)
+ 此阶段主要是准备你的视图/图层的层级关系,设置 layer 的属性，如 frame，background color 等等 创建 backing image：在这个阶段程序会创建 layer 的 backing image，无论是通过 setContents 将一个 image 传給 layer，还是通过 [drawRect:] 或 [drawLayer: inContext:] 来画出来的。所以 [drawRect:] 等函数是在这个阶段被调用的
  
 * Display:绘制过程、drawRect:调用
  此阶段是图层的寄宿图片被绘制的阶段。
 
 * Prepare:图片的解码、动画过程中将要显示的图片的时间点
  此阶段Core Animation准备发送动画数据到渲染服务的阶段
+ 在这个阶段，Core Animation 框架准备要渲染的 layer 的各种属性数据，以及要做的动画的参数，准备传递給 render server。同时在这个阶段也会解压要渲染的 image。（除了用 imageNamed：方法从 bundle 加载的 image 会立刻解压之外，其他的比如直接从硬盘读入，或者从网络上下载的 image 不会立刻解压，只有在真正要渲染的时候才会解压）
+ 
+ 
 
 * Commit:提交位图。
-最后的阶段，Core Animation打包所有图层和动画属性,然后通过IPC(内部处理通信)发送到渲染服务进行显示。
+最后的阶段，`Core Animation`打包所有图层和动画属性,然后通过`IPC(内部处理通信)`发送到渲染服务进行显示。
 
 #### GPU渲染管线
 ```mermaid
