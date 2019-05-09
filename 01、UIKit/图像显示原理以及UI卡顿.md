@@ -20,10 +20,10 @@ C --> D[Commit]
 ```
 
 * Layout: UI布局、文本计算等
- 此阶段主要是准备你的视图/图层的层级关系,设置 layer 的属性，如 frame，background color 等等 创建 backing image：在这个阶段程序会创建 layer 的 backing image，无论是通过 setContents 将一个 image 传給 layer，还是通过 [drawRect:] 或 [drawLayer: inContext:] 来画出来的。所以 [drawRect:] 等函数是在这个阶段被调用的
+ 此阶段主要是准备你的视图/图层的层级关系,设置 layer 的属性，如 frame，background color 等等 
  
 * Display:绘制过程、drawRect:调用
- 此阶段是图层的寄宿图片被绘制的阶段。
+ 此阶段是图层的寄宿图片被绘制的阶段。创建 backing image,在这个阶段程序会创建 layer 的 backing image，无论是通过 setContents 将一个 image 传給 layer，还是通过 [drawRect:] 或 [drawLayer: inContext:] 来画出来的。所以 [drawRect:] 等函数是在这个阶段被调用的
 
 * Prepare:图片的解码、动画过程中将要显示的图片的时间点
  此阶段Core Animation准备发送动画数据到渲染服务的阶段

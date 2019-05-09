@@ -32,6 +32,12 @@ __NSMallocBlock__ （ _NSConcreteMallocBlock ）
 **MRC确定**
 ![](./img/Snip20190323_19.png)
 
+
+**ARC示例**
+![](./img/Snip20190509_1.png)
+
+
+
 每一种类型的block调用copy后的结果如下所示:
 
 ![](./img/block_copy.png)

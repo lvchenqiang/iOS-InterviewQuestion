@@ -20,3 +20,12 @@
 ![](./img/Snip20190302_59.png)
 
 
+##### Accessor Method的判断
+
+```
+setKey:
+```
+
+##### instane var 的判断
+
+![](./img/Snip20190302_61.png)
