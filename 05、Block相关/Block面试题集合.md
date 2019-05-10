@@ -18,11 +18,17 @@ block的底层结构如下图所示:
  
  
 #### Block的类型
-block有3种类型，可以通过调用class方法或者isa指针查看具体类型，最终都是继承自NSBlock类型
+block有3种类型，可以通过调用class方法或者isa指针查看具体类型，最终都是继承自[NSBlock](https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/CoreFoundation.framework/NSBlock.h)类型
+
+__NSGlobalBlock__: https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/CoreFoundation.framework/__NSGlobalBlock.h
+
+__NSStackBlock__: https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/CoreFoundation.framework/__NSStackBlock.h
+
+__NSMallocBlock__: https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/CoreFoundation.framework/__NSMallocBlock.h
 
 ```
-__NSGlobalBlock__ （ _NSConcreteGlobalBlock ）
-__NSStackBlock__ （ _NSConcreteStackBlock ）
+__NSGlobalBlock__（ _NSConcreteGlobalBlock ） 
+__NSStackBlock__（ _NSConcreteStackBlock ）
 __NSMallocBlock__ （ _NSConcreteMallocBlock ）
 ```
 
