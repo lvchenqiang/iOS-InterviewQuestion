@@ -81,9 +81,6 @@ _Block_object_dispose函数会自动释放引用的auto变量（release）
 
 
 
-
-
-
 #### __weak的解决方案
 
 ```
