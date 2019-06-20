@@ -2,7 +2,7 @@
 
 ### Socket 简介
 
-Socket就是为⽹网络服务提供的⼀一种机制 通信的两端都是 Socket。 网络通信其实就是 Socket 间的通信 数据在两个 Socket 间通过 IO 传输。Socket是纯C语言的,是可以跨平台的。
+Socket就是为⽹络服务提供的⼀一种机制 通信的两端都是 Socket。 网络通信其实就是 Socket 间的通信 数据在两个 Socket 间通过 IO 传输。Socket是纯C语言的,是可以跨平台的。
 
 ![](./img/socket_002.png) 
 
