@@ -69,10 +69,14 @@ objc_msgSend底层有3大阶段
 如果为1，那么引用计数会存储在一个叫SideTable的类的属性中
 
 #### class结构
+
 ![](./img/Snip20190323_20.png)
 
+
 #### class_rw_t
+
 class_rw_t里面的methods、properties、protocols是二维数组，是可读可写的，包含了类的初始内容、分类的内容。
+
 ![](./img/Snip20190323_21.png)
 
 #### class_ro_t

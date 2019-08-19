@@ -31,7 +31,7 @@ C --> D[Commit]
  
  
 
-* Commit:提交位图。
+* Commit:提交位图
 最后的阶段，`Core Animation`打包所有图层和动画属性,然后通过`IPC(内部处理通信)`发送到渲染服务进行显示。
 
 #### GPU渲染管线
