@@ -1,0 +1,16 @@
+.math-captcha-form {
+	display:block;
+	float:none;
+	clear:both;
+}
+
+.login form .math-captcha-form span {
+	display: inline-block;
+	margin-bottom: 16px; 
+}
+input[type="text"].mc-input {
+	display: inline-block;
+	width: 60px!important;
+	vertical-align: middle;
+	margin-bottom: 0;
+}
