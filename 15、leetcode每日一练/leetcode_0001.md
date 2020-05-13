@@ -67,9 +67,99 @@ def threeSum(nums: List[int]) -> List[List[int]]:
 ### [3.求众数](https://leetcode-cn.com/problems/majority-element/)
 
 
+方案1：hashmap
+```
+
+def majorityElement(nums: List[int]) -> int:
+      hashMap = {}
+      maxC = 1
+      maxN = nums[0]
+      length = len(nums)
+      for index, num in enumerate(nums):
+          if hashMap.get(num) is not  None:
+              count = hashMap.get(num)
+              count += 1
+              hashMap[num] = count
+              if count > maxC :
+                  maxC = count
+                  maxN = num
+                  if count > int(length/2):
+                      return maxN
+
+          else:
+              hashMap[num] = 1
+
+
+
+      return  maxN
+
+
+
+```
+
+方案2：摩尔投票法
+适用于众数大于n/2
+
+```python3
+
+    count,majority = 1, nums[0]
+
+    for num in nums[1:]:
+        if count == 0:
+            majority = num
+
+        elif majority == num:
+            count += 1
+        else:
+            count -= 1
+
+    return  majority
+
+```
+
+方案3.使用Counter计数器
+
+```python3
+
+
+def majorityElement(nums: List[int]) -> int:
+    
+    return [k for k, v in collections.Counter(nums).items() if v > len(nums) // 2][0]
+
+
+```
+
+
+
+
+
 
 ### [4.缺失的第一个正数](https://leetcode-cn.com/problems/first-missing-positive/)
 
+``` python3
+
+def firstMissingPositive(nums: List[int]) -> int:
+
+    if 1 not in nums:
+        return 1
+
+    length = len(nums)
+    if length == 1:
+        return 2
+
+    nums.sort()
+    minN = 1
+
+    for i,num in enumerate(nums):
+        if num == minN:
+            minN+=1
+
+        if num > minN:
+            return minN
+
+    return minN
+
+```
 
 
 ### [5.环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
@@ -77,3 +167,21 @@ def threeSum(nums: List[int]) -> List[List[int]]:
 
 
 ### [6.合并k个排序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
+
+
+## 基础
+### 数组
+实现一个支持动态扩容的数组 
+
+实现一个大小固定的有序数组，支持动态增删改操作
+
+实现两个有序数组合并为一个有序数组
+### 链表
+实现单链表、循环链表、双向链表，支持增删操作
+
+实现单链表反转 
+ 
+实现两个有序的链表合并为一个有序链表
+
+
+实现求链表的中间结点

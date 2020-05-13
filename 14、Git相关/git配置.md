@@ -357,7 +357,6 @@ $ git push [remote] --all
 ### 撤销
 
 
-
 ```
 
 # 恢复暂存区的指定文件到工作区
@@ -407,8 +406,6 @@ $ git stash apply
 $ git stash drop
 
 
-
-
 ```
 
 
@@ -436,6 +433,16 @@ $ git commit --amend -m [message]
 # 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
  
+ # 合并某个commit到当前分支
+ $ git cherry-pick [commit id]
+ 
+ # 合并某个分支上的一系列commits
+ 
+ 首先需要基于feature创建一个新的分支，并指明新分支的最后一个commit：
+ $ git checkout -b newbranch 62ecb3
+ 然后，rebase这个新分支的commit到master（--ontomaster）76cada^ 指明你想从哪个特定的commit开始
+ 
+ git rebase --onto master 76cada^ 
  
  
 ```
