@@ -671,4 +671,10 @@ $ git apply --check ../sync.patch
 # 查看Git的版本
 $ git --version
 
+
+# 暂存区和历史对比 可快速查看文件变动 增删总行数
+git diff --cached --stat
+
+# 从master分支拾取 bb.text文件到当前分支
+git checkout --patch master bb.text
 ```
