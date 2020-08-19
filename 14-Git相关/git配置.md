@@ -677,4 +677,8 @@ git diff --cached --stat
 
 # 从master分支拾取 bb.text文件到当前分支
 git checkout --patch master bb.text
+
+
+# 移除git已提交的已追踪的文件
+git rm -r --cached .
 ```
