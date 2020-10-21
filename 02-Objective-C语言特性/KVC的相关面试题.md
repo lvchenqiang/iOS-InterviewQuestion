@@ -29,3 +29,7 @@ setKey:
 ##### instane var 的判断
 
 ![](./img/Snip20190302_61.png)
+
+
+
+[自定义KVC示例](https://github.com/lvchenqiang/LYUKit_OC/tree/main/LYUKit/LYUKVC)
