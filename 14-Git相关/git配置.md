@@ -681,4 +681,12 @@ git checkout --patch master bb.text
 
 # 移除git已提交的已追踪的文件
 git rm -r --cached .
+
+
+# 查看当前的分支
+
+## git pull --rebase
+冲突后 
+git rebase --continue
+git rebase --skip//没有冲突了 且没有修改
 ```
